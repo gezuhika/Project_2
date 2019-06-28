@@ -4,14 +4,14 @@
       <div class="col-8 offset-2">
         <h1>{{msg}}</h1>
         <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
+        <form class="clearfix mb-4" action="/api/examples" method="POST">
           <div class="form-group">
             <label for="example-text">Drivers Full Name</label>
-            <input type="text" id="driverName" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+            <input type="text" id="form-data" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
           </div>
           <div class="form-group">
             <label for="example-description">Vehicle Year/Make/Model</label>
-            <input class="form-control" id="carYMM" aria-describedby="example-description" placeholder="Enter Example Description"></input>
+            <input class="form-control" id="form-description" aria-describedby="example-description" placeholder="Enter Example Description"></input>
           </div>
           <div class="form-group">
             <label for="example-description">Address You Are Departing From</label>
