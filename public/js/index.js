@@ -1,6 +1,10 @@
 // Get references to page elements
-var $formData = $("#form-data");
+var $formName = $("#form-data");
 var $formDescription = $("#form-description");
+var $formDeptAddress = $("#departure");
+var $formDestAddress = $("#destination");
+var $formDepartTime = $("#departTime");
+var $formNumSeats = $("#seats");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
@@ -35,7 +39,7 @@ var refreshExamples = function() {
   API.getExamples().then(function(data) {
     var $examples = data.map(function(example) {
       var $a = $("<a>")
-        .text(example.text)
+        .text(example.driverName)
         .attr("href", "/example/" + example.id);
 
       var $li = $("<li>")
@@ -65,11 +69,15 @@ var handleFormSubmit = function(event) {
   event.preventDefault();
 
   var example = {
-    text: $formData.val().trim(),
-    description: $formDescription.val().trim()
+    driverName: $formName.val().trim(),
+    YMM: $formDescription.val().trim(),
+    departAddress: $formDeptAddress.val().trim(),
+    destAddress: $formDestAddress.val().trim(),
+    departTime: $formDepartTime.val().trim(),
+    numSeats: $formNumSeats.val().trim()
   };
 
-  if (!(example.text && example.description)) {
+  if (!(example.driverName && example.YMM && example.numSeats)) {
     alert("You must enter an example text and description!");
     return;
   }
@@ -78,7 +86,7 @@ var handleFormSubmit = function(event) {
     refreshExamples();
   });
 
-  $formData.val("");
+  $formName.val("");
   $formDescription.val("");
 };
 
