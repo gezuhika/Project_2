@@ -8,11 +8,18 @@ var db = require("../models");
 router.get("/", function (req, res) {
     db.Example.findAll({}).then(function (dbExamples) {
         res.render("index", {
-            msg: "Welcome!",
+            msg: "Welcome to ShredShare!",
             examples: dbExamples
         });
     });
 });
+
+// Load drivers.handlebars
+router.get("/createDriver" , function(req, res){
+    res.render("test", {
+
+    });
+})
 
 // Load example page and pass in an example by id
 router.get("/example/:id", function (req, res) {
