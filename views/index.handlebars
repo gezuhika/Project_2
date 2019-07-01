@@ -1,50 +1,14 @@
-<div id="home">
-  <div class="container">
+<div class="container">
     <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>Welcome to ShredShare!</h2>
-        <form class="clearfix mb-4" action="/api/examples" method="POST">
-          <div class="form-group">
-            <label for="example-text">Drivers Full Name</label>
-            <input type="text" id="form-data" class="form-control" aria-describedby="example-text" placeholder="John Doe">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Vehicle Year/Make/Model</label>
-            <input class="form-control" id="form-description" aria-describedby="example-description" placeholder="2009 Subaru WRX"></input>
-          </div>
-          <div class="form-group">
-            <label for="example-description">Address You Are Departing From</label>
-            <textarea class="form-control" id="departure" aria-describedby="example-description" placeholder="1634 18th St. Denver, Co 80202"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="example-description">Address of Destination</label>
-            <textarea class="form-control" id="destination" aria-describedby="example-description" placeholder="69 Wood Rd. Snowmass Village, Co 81615"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="example-description">Departure Time</label>
-            <input class="form-control" id="departTime" aria-describedby="example-description" placeholder="7:30pm"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="example-description">Number of Available Seats</label>
-            <input class="form-control" id="seats" aria-describedby="example-description" placeholder="1"></input>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Available Rides:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.driverName}} has {{this.numSeats}} seats available and is heading to {{this.destAddress}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
+        <div class="col-8 offset-2">
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h3 class="card-title">Are You a Driver or Passenger</h3>
+                    <a href="/drivers"><button>I'm a Driver</button></a>
+                    <a href="/passengers"><button>I'm a Passenger</button></a>
+
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>

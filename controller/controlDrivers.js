@@ -6,26 +6,31 @@ var router = express.Router();
 var db = require("../models");
 
 router.get("/", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
         res.render("index", {
             msg: "Welcome to ShredShare!",
-            examples: dbExamples
         });
-    });
 });
 
 // Load drivers.handlebars
-router.get("/createDriver" , function(req, res){
-    res.render("test", {
-
+router.get("/drivers" , function(req, res){
+    res.render("../views/drivers/driverInput.handlebars", {
     });
-})
+});
+
+router.get("/passengers" , function(req, res){
+        db.Example.findAll({}).then(function (dbExamples) {
+            res.render("../views/passengers/passSearch.handlebars", {
+                msg: "Welcome to ShredShare!",
+                examples: dbExamples
+            });
+    });
+});
 
 // Load example page and pass in an example by id
 router.get("/example/:id", function (req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function (dbExample) {
+    db.Example.findOne({ where: { id: req.params.id } }).then(function (dbResponse) {
         res.render("example", {
-            example: dbExample
+            driver: dbResponse
         });
     });
 });

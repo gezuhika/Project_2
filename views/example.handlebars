@@ -3,17 +3,37 @@
     <div class="col-8 offset-2">
       <div class="card mt-4">
         <div class="card-body">
-          <h5 class="card-title">Example</h5>
-          <p>
-            <strong>ID</strong>: {{example.id}}</p>
-          <p>
-          <p>
-            <strong>Text</strong>: {{example.text}}</p>
-          <p>
-            <strong>Description:</strong> {{example.description}}</p>
-            <a href="/">← Back To Home</a>
+          <h4 class="card-title">Driver Information:</h4>
+          <br>
+          <p><strong>Driver Name</strong>: {{driver.driverName}}</p>
+          <p><strong>Vehicle Description</strong>: {{driver.YMM}}</p>
+          <p><strong>Leaving From</strong>: {{driver.departAddress}}</p>
+          <p><strong>Departure Time</strong>: {{driver.departTime}}</p>
+          <p><strong>Number of Seats Available</strong>: <span id="seats">{{driver.numSeats}}</span></p>
         </div>
       </div>
+      <div class="card mt-4">
+        <div class="card-body">
+          <h4 class="card-title">Reserve this Driver:</h4>
+          <br>
+          <h5>Select the Number of Seats You Need:</h5>
+          <select id="seatPicker">
+
+          </select>
+        </div>
+      </div>
+      <a href="/passengers">← Back To List</a>
     </div>
   </div>
 </div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var seats = $("#seats");
+  var numSeats = parseInt(seats[0].innerText)
+  for (i=0; i<numSeats; i++){
+    var option = $("<option>", {id: i+1, value: i+1});
+    option.text(i+1);
+    $("#seatPicker").append(option);
+  }
+</script>
