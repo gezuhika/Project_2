@@ -17,9 +17,10 @@
           <h4 class="card-title">Reserve this Driver:</h4>
           <br>
           <h5>Select the Number of Seats You Need:</h5>
-          <select id="seatPicker">
+          <select id="seat-picker">
 
           </select>
+          <button id="reserve-button">Book This Ride!</button>
         </div>
       </div>
       <a href="/passengers">← Back To List</a>
@@ -29,11 +30,20 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
+  var numSeats;
+  createOptions();
+  function createOptions(){
   var seats = $("#seats");
-  var numSeats = parseInt(seats[0].innerText)
+  numSeats = parseInt(seats[0].innerText);
   for (i=0; i<numSeats; i++){
     var option = $("<option>", {id: i+1, value: i+1});
     option.text(i+1);
-    $("#seatPicker").append(option);
-  }
+    $("#seat-picker").append(option);
+  }};
+
+  $("#reserve-button").on("click", function(){
+    var needSeats= $("#seat-picker").val();
+    console.log(needSeats)
+  });
+  
 </script>
