@@ -12,6 +12,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
 
+var bodyParser = require("body-parser");
+
+app.use(bodyParser.json());
+
+
 // Handlebars
 app.engine(
   "handlebars",
@@ -22,8 +27,13 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+var driverRoutes = require("./controller/controlDrivers");
+var passRoutes = require("./controller/controlPass");
+
+app.use(driverRoutes);
+// app.use(passRoutes);
+// require("./routes/apiRoutes")(app);
+// require("./routes/htmlRoutes")(app);
 
 var syncOptions = { force: false };
 

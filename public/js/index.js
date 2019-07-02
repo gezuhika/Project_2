@@ -1,6 +1,10 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
+var $formName = $("#form-data");
+var $formDescription = $("#form-description");
+var $formDeptAddress = $("#departure");
+var $formDestAddress = $("#destination");
+var $formDepartTime = $("#departTime");
+var $formNumSeats = $("#seats");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
@@ -27,21 +31,24 @@ var API = {
       url: "api/examples/" + id,
       type: "DELETE"
     });
+  },
+  updateExample: function(id){
+    
   }
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function() {
   API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
+    var $drivers = data.map(function(driver) {
       var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+        .text(driver.driverName)
+        .attr("href", "/example/" + driver.id);
 
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
-          "data-id": example.id
+          "data-id": driver.id
         })
         .append($a);
 
@@ -55,7 +62,7 @@ var refreshExamples = function() {
     });
 
     $exampleList.empty();
-    $exampleList.append($examples);
+    $exampleList.append($drivers);
   });
 };
 
@@ -64,22 +71,30 @@ var refreshExamples = function() {
 var handleFormSubmit = function(event) {
   event.preventDefault();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+  var driver = {
+    driverName: $formName.val().trim(),
+    YMM: $formDescription.val().trim(),
+    departAddress: $formDeptAddress.val().trim(),
+    destAddress: $formDestAddress.val().trim(),
+    departTime: $formDepartTime.val().trim(),
+    numSeats: $formNumSeats.val().trim()
   };
 
-  if (!(example.text && example.description)) {
+  if (!(driver.driverName && driver.YMM && driver.numSeats)) {
     alert("You must enter an example text and description!");
     return;
   }
 
-  API.saveExample(example).then(function() {
+  API.saveExample(driver).then(function() {
     refreshExamples();
   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+  $formName.val("");
+  $formDescription.val("");
+  $formDeptAddress.val("");
+  $formDestAddress.val("");
+  $formDepartTime.val("");
+  $formNumSeats.val("");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
