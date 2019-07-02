@@ -31,6 +31,9 @@ var API = {
       url: "api/examples/" + id,
       type: "DELETE"
     });
+  },
+  updateExample: function(id){
+    
   }
 };
 
@@ -92,7 +95,6 @@ var handleFormSubmit = function(event) {
   $formDestAddress.val("");
   $formDepartTime.val("");
   $formNumSeats.val("");
-
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked

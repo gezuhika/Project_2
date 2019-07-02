@@ -49,6 +49,21 @@ router.post("/api/examples", function (req, res) {
     });
 });
 
+//  UPDATE DATABASE
+router.put("/api/examples/:id", function(req, res) {
+    db.Example.findOne({where: {id: req.params.id}})
+        .then(function(driver) {
+            if(req.body.numberOfSeats > driver.numberOfSeats) {
+                throw new Error("Cannot book more seats than are available");
+            } else {
+                driver.numberOfSeats = driver.numberOfSeats - req.body.numberOfSeats;
+                return db.Example.update({where: {id: req.params.id}}, driver);
+            }
+        })
+        .then(function(driver) {
+            res.json(driver);
+        });
+});
 // Delete an example by id
 router.delete("/api/examples/:id", function (req, res) {
     db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
