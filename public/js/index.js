@@ -1,3 +1,5 @@
+// import { json } from "sequelize/types";
+
 // Get references to page elements
 var $formName = $("#form-data");
 var $formDescription = $("#form-description");
@@ -7,6 +9,7 @@ var $formDepartTime = $("#departTime");
 var $formNumSeats = $("#seats");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
+var $updateBtn = $("#reserve-button")
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -32,8 +35,12 @@ var API = {
       type: "DELETE"
     });
   },
-  updateExample: function(id){
-    
+  updateDriver: function(id, seats) {
+    return $.ajax({
+      url: "/api/examples/" + id,
+      type: "PUT",
+      data: { numberOfSeats: seats }
+    });
   }
 };
 
@@ -109,6 +116,15 @@ var handleDeleteBtnClick = function() {
   });
 };
 
+var handleUpdateBtn = function() {
+  var seats = $("#seat-picker").val();
+  var id = $("#driver-id")[0].innerHTML;
+  API.updateDriver(id, seats).then(function() {
+    location.reload();
+  });
+};
+
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+$updateBtn.on("click", handleUpdateBtn)

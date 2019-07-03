@@ -53,11 +53,11 @@ router.post("/api/examples", function (req, res) {
 router.put("/api/examples/:id", function(req, res) {
     db.Example.findOne({where: {id: req.params.id}})
         .then(function(driver) {
-            if(req.body.numberOfSeats > driver.numberOfSeats) {
+            if(parseInt(req.body.numberOfSeats) > driver.numSeats) {
                 throw new Error("Cannot book more seats than are available");
             } else {
-                driver.numberOfSeats = driver.numberOfSeats - req.body.numberOfSeats;
-                return db.Example.update({where: {id: req.params.id}}, driver);
+                var availableSeats = driver.numSeats - parseInt(req.body.numberOfSeats);
+                return db.Example.update({numSeats: availableSeats}, {where: {id: req.params.id}});
             }
         })
         .then(function(driver) {
