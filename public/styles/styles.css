@@ -1,3 +1,11 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+h1, h2 {
+  color: white;
+}
+
+.form-group {
+  color: white;
+}
