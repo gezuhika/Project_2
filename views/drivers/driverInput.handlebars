@@ -17,17 +17,17 @@
                     </div>
                     <div class="form-group">
                         <label for="example-description">Address You Are Departing From</label>
-                        <textarea class="form-control" id="departure" aria-describedby="example-description"
-                            placeholder="1634 18th St. Denver, Co 80202"></textarea>
+                        <input type="text" class="form-control" id="departure" aria-describedby="example-description"
+                            placeholder="1634 18th St. Denver, Co 80202"></input>
                     </div>
                     <div class="form-group">
                         <label for="example-description">Address of Destination</label>
-                        <textarea class="form-control" id="destination" aria-describedby="example-description"
-                            placeholder="69 Wood Rd. Snowmass Village, Co 81615"></textarea>
+                        <input class="form-control" id="destination" aria-describedby="example-description"
+                            placeholder="69 Wood Rd. Snowmass Village, Co 81615"></input>
                     </div>
                     <div class="form-group">
                         <label for="example-description">Departure Time</label>
-                        <input class="form-control" id="departTime" aria-describedby="example-description"
+                        <input type="time" class="form-control" id="departTime" aria-describedby="example-description"
                             placeholder="7:30pm"></textarea>
                     </div>
                     <div class="form-group">
@@ -35,9 +35,30 @@
                         <input class="form-control" id="seats" aria-describedby="example-description"
                             placeholder="1"></input>
                     </div>
-                    <button id="submit" class="btn btn-primary float-right">Submit</button>
+                    <button id="submit" class="btn btn-primary float-right" data-toggle="modal"
+                        data-target="#submitModal">Submit</button>
                 </form>
                 <a href="/">← Back To Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-title"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5 id="modalHeading"></h5>
+                <p id="modalParagraph"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -45,4 +66,6 @@
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcZj7iP9X17JiXt4TaefPRP8c5VT2kOtg&libraries=places"></script>
 <script src="/js/index.js"></script>
