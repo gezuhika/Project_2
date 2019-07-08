@@ -2,10 +2,26 @@
   line-height: 2.5;
 }
 
-h1, h2 {
+h1 {
+  color: white;
+  font-family: 'Nosifer';
+  font-size: 60px;
+}
+
+h2, h4 {
   color: white;
 }
 
 .form-group {
   color: white;
+}
+
+.carousel-item {
+  width: auto;
+}
+
+h3 {
+  font-family: 'Monoton';
+  color: black;
+  background-color: white;
 }
