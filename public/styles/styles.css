@@ -25,3 +25,8 @@ h3 {
   color: black;
   background-color: white;
 }
+
+.black {
+  background-color: none;
+  color: black;
+}
